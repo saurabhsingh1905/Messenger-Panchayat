@@ -40,21 +40,22 @@ app.listen(port, () => {
 const User = require("./models/user");
 const Message = require("./models/message");
 
-//ENDPOINT FOR REGISTER
+//endpoint for registration of the user
 
-app.post("/register",(req,res) =>{
-  const {name,email,password,image} =req.body;
-  console.log(name)
+app.post("/register", (req, res) => {
+  const { name, email, password, image } = req.body;
 
-  //create a new user
-  const newUser = new User ({name,email,password,image})
-  console.log(newUser)
+  // create a new User object
+  const newUser = new User({ name, email, password, image });
 
-  //save user to database
-  newUser.save().then(()=> {
-    res.status(200).json({message:"User Registerd Successfully"})
-  }).catch((err)=>{
-    console.log("Error Registering The User ", err)
-    res.status(500).json({message:"Error registering the User"})
-  })
-})
+  // save the user to the database
+  newUser
+    .save()
+    .then(() => {
+      res.status(200).json({ message: "User registered successfully" });
+    })
+    .catch((err) => {
+      console.log("Error registering user", err);
+      res.status(500).json({ message: "Error registering the user!" });
+    });
+});

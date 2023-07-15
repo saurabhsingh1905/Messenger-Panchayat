@@ -50,26 +50,27 @@ const RegisterScreen = () => {
       image: image,
     };
 
-    //send a POST request to backend api to register user
-    axios.post("http://localhost:8000/register",user).then((response) => {
-      console.log(response);
 
-      Alert.alert(
-        "Registration Successful",
-        "You have been Registerd Successfully"
-      );
-      setName("");
-      setEmail("");
-      setPassword("");
-      setImage("");
-    }).catch((error)=>{
+    axios
+      .post("http://192.168.205.136:8000/register", user)
+      .then((response) => {
+        console.log(response);
         Alert.alert(
-            "Registration Error",
-            "An error has occured while registering"
-            
-        )
-        console.log("registration failed",error)
-    });
+          "Registration successful",
+          "You have been registered Successfully"
+        );
+        setName("");
+        setEmail("");
+        setPassword("");
+        setImage("");
+      })
+      .catch((error) => {
+        Alert.alert(
+          "Registration Error",
+          "An error occurred while registering"
+        );
+        console.log("registration failed", error);
+      });
   };
 
   return (
