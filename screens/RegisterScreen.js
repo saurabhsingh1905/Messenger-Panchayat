@@ -54,7 +54,7 @@ const RegisterScreen = () => {
     axios
       .post("http://192.168.205.136:8000/register", user)
       .then((response) => {
-        console.log(response);
+        //console.log(response);
         Alert.alert(
           "Registration successful",
           "You have been registered Successfully"
@@ -67,7 +67,7 @@ const RegisterScreen = () => {
       .catch((error) => {
         Alert.alert(
           "Registration Error",
-          "An error occurred while registering"
+          "Something went wrong"
         );
         console.log("registration failed", error);
       });
@@ -209,7 +209,7 @@ const RegisterScreen = () => {
                 fontWeight: "500",
               }}
             >
-              Already have a account? Register
+              Already have a account? SignIn
             </Text>
           </Pressable>
         </View>
